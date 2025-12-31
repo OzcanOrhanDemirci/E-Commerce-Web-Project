@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Components | PC Craft</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script src="js/auth.js" defer></script>
+    <script src="js/currency.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">PC <span style="color: var(--accent);">CRAFT</span></a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">Components</a></li>
+                    <li><a href="pc-builder.html" style="color: var(--accent);">PC Builder</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <div class="currency-wrapper">
+                        <select id="currency-selector" class="currency-select">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="TRY">TRY (₺)</option>
+                        </select>
+                    </div>
+
+                    <a href="login.html" title="Login / Account">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="user-greeting" style="font-size: 0.8rem; margin-left: 5px;"></span>
+                    </a>
+
+                    <a href="cart.html" title="Shopping Cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-count">(0)</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 2rem 0;">
+        <div class="shop-header">
+            <h1><span style="color: var(--accent);">Components</span></h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search (e.g. RTX 4060, Ryzen 5)...">
+                <button id="search-btn"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="shop-layout">
+            <aside class="filters">
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <ul class="category-list" id="category-list">
+                        <li><button class="filter-btn active" data-category="all">All Components</button></li>
+                        <li><button class="filter-btn" data-category="cpu">Processors (CPU)</button></li>
+                        <li><button class="filter-btn" data-category="motherboard">Motherboards</button></li>
+                        <li><button class="filter-btn" data-category="gpu">Graphics Cards</button></li>
+                        <li><button class="filter-btn" data-category="ram">Memory (RAM)</button></li>
+                        <li><button class="filter-btn" data-category="storage">Storage</button></li>
+                        <li><button class="filter-btn" data-category="psu">Power Supply</button></li>
+                        <li><button class="filter-btn" data-category="case">PC Cases</button></li>
+                        <li><button class="filter-btn" data-category="cooling">Cooling</button></li>
+                    </ul>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Max Price</h3>
+                    <input type="range" id="price-range" min="0" max="3000" step="50" value="3000">
+                    <div class="price-labels">
+                        <span>$0</span>
+                        <span id="price-value" style="color: var(--accent); font-weight: bold;">$3000</span>
+                    </div>
+                </div>
+
+                <div id="dynamic-filters" style="margin-top: 2rem;"></div>
+
+                <button id="clear-filters" style="width: 100%; padding: 10px; border: 1px solid #333; background: transparent; color: #ff4d4d; border-radius: 4px; margin-top: 2rem; cursor: pointer;">
+                    Clear All Filters
+                </button>
+            </aside>
+
+            <section id="shop-products" class="product-grid">
+                <p style="text-align: center; width: 100%;">Loading products...</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <p style="font-size: 0.9rem; color: #777;">
+                All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+</html>

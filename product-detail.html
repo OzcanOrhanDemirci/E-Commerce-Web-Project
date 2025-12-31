@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | PC Craft</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script src="js/auth.js" defer></script>
+    <script src="js/currency.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">PC <span style="color: var(--accent);">CRAFT</span></a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Components</a></li>
+                    <li><a href="pc-builder.html" style="color: var(--accent);">PC Builder</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <div class="currency-wrapper">
+                        <select id="currency-selector" class="currency-select">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="TRY">TRY (₺)</option>
+                        </select>
+                    </div>
+
+                    <a href="login.html" title="Login / Account">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="user-greeting" style="font-size: 0.8rem; margin-left: 5px;"></span>
+                    </a>
+
+                    <a href="cart.html" title="Shopping Cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-count">(0)</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 4rem 0;">
+
+        <div class="breadcrumb" style="margin-bottom: 2rem; color: var(--text-main);">
+            <a href="shop.html">Shop</a>
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem; margin: 0 10px;"></i>
+            <span id="bc-name" style="color: var(--text-light);">Loading...</span>
+        </div>
+
+        <div class="detail-container">
+            <div class="detail-image-wrapper">
+                <img id="detail-img" src="" alt="Product Image" class="detail-image">
+            </div>
+
+            <div class="detail-info">
+                <h1 id="detail-name">Product Name</h1>
+                <div class="detail-meta">
+                    <span id="detail-category" class="badge-outline">CATEGORY</span>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #555;"></i>
+                        <i class="fa-regular fa-star" style="color: #555;"></i>
+                        <i class="fa-regular fa-star" style="color: #555;"></i>
+                        <i class="fa-regular fa-star" style="color: #555;"></i>
+                        <i class="fa-regular fa-star" style="color: #555;"></i>
+                        <span style="color: var(--text-main); font-size: 0.9rem; margin-left: 5px;">(Loading Reviews...)</span>
+                    </div>
+                </div>
+
+                <div class="price-section">
+                    <div id="detail-price" class="main-price">$0.00</div>
+                    <div class="installment-info">
+                        <i class="fa-regular fa-credit-card"></i>
+                        <span id="installment-price">$0.00 interest-free</span>
+                    </div>
+                </div>
+
+                <p class="description">
+                    Upgrade your workstation with this high-performance component.
+                    Engineered for stability, silence, and speed, meeting the rigorous demands of modern computing.
+                </p>
+
+                <div class="actions">
+                    <button id="add-to-cart-btn" class="btn-primary" style="width: 100%; padding: 15px;">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <div class="specs-container">
+                    <h3>Technical <span style="color: var(--accent);">Specifications</span></h3>
+                    <table class="specs-table">
+                        <tbody id="specs-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <section class="reviews-section" style="margin-top: 4rem;">
+            <h2 style="border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 2rem;">User Reviews</h2>
+
+            <div id="add-review-section" style="background: var(--card-bg); padding: 2rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #333;">
+
+                <div id="review-login-msg" style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: var(--text-main);">Please login to write a review.</p>
+                    <a href="login.html" class="btn-primary" style="padding: 8px 20px; display: inline-block;">Login / Register</a>
+                </div>
+
+                <div id="review-form-container" style="display: none;">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-light);">Write a Review</h3>
+                    <form id="review-form">
+                        <div style="margin-bottom: 1rem;">
+                            <label style="color: var(--text-main); display: block; margin-bottom: 5px;">Rating:</label>
+                            <select id="review-rating" style="padding: 8px; background: #111; color: white; border: 1px solid #333; border-radius: 4px; width: 100%; max-width: 200px;">
+                                <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+                                <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+                                <option value="3">⭐⭐⭐ (3 Stars)</option>
+                                <option value="2">⭐⭐ (2 Stars)</option>
+                                <option value="1">⭐ (1 Star)</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="color: var(--text-main); display: block; margin-bottom: 5px;">Your Review:</label>
+                            <textarea id="review-text" rows="3" placeholder="Share your experience with this product..." style="width: 100%; padding: 10px; background: #111; color: white; border: 1px solid #333; border-radius: 4px; resize: vertical;" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="reviews-container">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <p style="font-size: 0.9rem; color: #777;">
+                All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/detail.js"></script>
+</body>
+</html>

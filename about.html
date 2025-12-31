@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | PC Craft</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script src="js/auth.js" defer></script>
+    <script src="js/currency.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">PC <span style="color: var(--accent);">CRAFT</span></a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Components</a></li>
+                    <li><a href="pc-builder.html" style="color: var(--accent);">PC Builder</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <div class="currency-wrapper">
+                        <select id="currency-selector" class="currency-select">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="TRY">TRY (₺)</option>
+                        </select>
+                    </div>
+
+                    <a href="login.html" title="Login / Account">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="user-greeting" style="font-size: 0.8rem; margin-left: 5px;"></span>
+                    </a>
+
+                    <a href="cart.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-count">(0)</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section style="background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.85)), url('assets/background.jpg'); background-size: cover; background-position: center; padding: 4rem 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">Our <span style="color: var(--accent);">Craft</span></h1>
+                <p style="max-width: 600px; margin: 0 auto; font-size: 1.1rem; color: var(--text-main);">MIS 326 Web Programming Final Project</p>
+            </div>
+        </section>
+
+        <section class="container" style="padding: 4rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div>
+                <h2 style="margin-bottom: 1.5rem;">Our <span style="color: var(--accent);">Mission</span></h2>
+                <p style="margin-bottom: 1rem; color: var(--text-main);">We developed this project to make the process of building a PC on your own through online shopping easier and more enjoyable.</p>
+            </div>
+            <div style="background: var(--card-bg); padding: 2rem; border-radius: 8px; border: 1px solid #333;">
+                <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-code" style="color: var(--accent);"></i> The Project</h3>
+                <ul style="list-style: disc; padding-left: 1.5rem; line-height: 2; color: var(--text-main);">
+                    <li>Web Programming Final Project</li>
+                    <li>Developed with Vanilla JS, HTML, CSS</li>
+                    <li>Features Google Firebase Auth</li>
+                    <li>Real-time Currency Conversion API</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container" style="padding-bottom: 4rem;">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Meet the <span style="color: var(--accent);">Developers</span></h2>
+
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="background: var(--card-bg); padding: 3rem 2rem; border-radius: 8px; width: 320px; text-align: center; border: 1px solid #333; transition: transform 0.3s ease;">
+                    <div style="width: 120px; height: 120px; background: #0b0c10; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent); overflow: hidden;">
+                        <img src="assets/ozcan.jpg" alt="Özcan Orhan Demirci" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 style="font-size: 1.4rem;">Özcan Orhan Demirci</h3>
+                </div>
+
+                <div style="background: var(--card-bg); padding: 3rem 2rem; border-radius: 8px; width: 320px; text-align: center; border: 1px solid #333; transition: transform 0.3s ease;">
+                    <div style="width: 120px; height: 120px; background: #0b0c10; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent); overflow: hidden;">
+                        <img src="assets/mithat.jpg" alt="Mithat Tuğrul Tek" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 style="font-size: 1.4rem;">Mithat Tuğrul Tek</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <p style="font-size: 0.9rem; color: #777;">
+                All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
